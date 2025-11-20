@@ -1,7 +1,6 @@
 .calendar {
   display: flex;
   padding: $calendar-paddding;
-  margin: 0 auto;
   gap: $gap;
   flex-wrap: wrap;
   max-width: $day-size * 7 + $gap * 6;

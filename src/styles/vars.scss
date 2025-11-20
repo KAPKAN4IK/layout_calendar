@@ -6,13 +6,6 @@ $day-bg-color: #eee;
 $day-bg-color-hover: #ffbfcb;
 
 @function set-margin($num-of-week) {
-  @return ($num-of-week * $day-size) + ($num-of-week * $gap);
+  @return $num-of-week * ($day-size + $gap);
 }
 
-$margin-mon: 0;
-$margin-tue: set-margin(1);
-$margin-wed: set-margin(2);
-$margin-thu: set-margin(3);
-$margin-fri: set-margin(4);
-$margin-sat: set-margin(5);
-$margin-sun: set-margin(6);

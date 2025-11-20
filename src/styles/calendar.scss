@@ -7,27 +7,23 @@
   max-width: $day-size * 7 + $gap * 6;
   font-family: Arial, Helvetica, sans-serif;
 
+
+
   &--start-day {
-    &-mon :first-child {
-      margin-left: $margin-mon;
-    }
-    &-tue :first-child {
-      margin-left: $margin-tue;
-    }
-    &-wed :first-child {
-      margin-left: $margin-wed;
-    }
-    &-thu :first-child {
-      margin-left: $margin-thu;
-    }
-    &-fri :first-child {
-      margin-left: $margin-fri;
-    }
-    &-sat :first-child {
-      margin-left: $margin-sat;
-    }
-    &-sun :first-child {
-      margin-left: $margin-sun;
+    $week-stars: (
+      mon: 0,
+      tue: 1,
+      wed: 2,
+      thu: 3,
+      fri: 4,
+      sat: 5,
+      sun: 6
+    );
+
+    @each $day, $index in $week-stars {
+      &-#{$day} :first-child {
+        margin-left: set-margin($index);
+      }
     }
   }
 
@@ -59,18 +55,14 @@
     }
   }
 
-  &--month-length {
-    &-31 .calendar__day:nth-child(n + 32) {
-      display: none;
-    }
-    &-30 .calendar__day:nth-child(n + 31) {
-      display: none;
-    }
-    &-29 .calendar__day:nth-child(n + 30) {
-      display: none;
-    }
-    &-28 .calendar__day:nth-child(n + 29) {
-      display: none;
+  $days-display-none: (28, 29, 30, 31);
+
+  @each $day in $days-display-none {
+    &--month-length {
+      &-#{$day} .calendar__day:nth-child(n + #{$day + 1}) {
+        display: none;
+      }
     }
   }
+
 }
